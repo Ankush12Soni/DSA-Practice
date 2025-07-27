@@ -32,7 +32,7 @@ class Solution {
             System.out.print(temp.val + " -> ");
             temp = temp.next;
         }
-        System.out.println("null");
+        System.out.println("Null");
     }
 
     // Utility function to create a list from array

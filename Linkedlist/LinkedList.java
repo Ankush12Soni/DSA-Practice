@@ -2,27 +2,35 @@ package Linkedlist;
 
 public class LinkedList {
     Node head;
+    private int size = 0;
 
     public void insertAtStart(int data) {
         Node newNode = new Node(data);
         newNode.next = head;
         head = newNode;
+        size++;
     }
 
     public void insertAtEnd(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
-            return;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
         }
-        Node current = head;
-        while (current.next != null) {
-            current = current.next;
-        }
-        current.next = newNode;
+        size++;
     }
 
     public void insertAtPosition(int index, int data) {
+        if (index < 0 || index > size) {
+            System.out.println("Index out of bounds");
+            return;
+        }
+
         if (index == 0) {
             insertAtStart(data);
             return;
@@ -31,17 +39,31 @@ public class LinkedList {
         Node newNode = new Node(data);
         Node current = head;
 
-        for (int i = 0; current != null && i < index - 1; i++) {
+        for (int i = 0; i < index - 1; i++) {
             current = current.next;
-        }
-
-        if (current == null) {
-            System.out.println("Index out of bounds");
-            return;
         }
 
         newNode.next = current.next;
         current.next = newNode;
+        size++;
+    }
+
+    // Insert using recursion
+    public void insertUsingRec(int data, int index) {
+        if (index < 0 || index > size) {
+            System.out.println("Index out of bounds");
+            return;
+        }
+        head = insertRec(data, index, head);
+    }
+
+    private Node insertRec(int data, int index, Node node) {
+        if (index == 0) {
+            size++;
+            return new Node(data, node);
+        }
+        node.next = insertRec(data, index - 1, node.next);
+        return node;
     }
 
     public void deleteFromStart() {
@@ -50,6 +72,7 @@ public class LinkedList {
             return;
         }
         head = head.next;
+        size--;
     }
 
     public void deleteFromEnd() {
@@ -60,40 +83,32 @@ public class LinkedList {
 
         if (head.next == null) {
             head = null;
-            return;
+        } else {
+            Node current = head;
+            while (current.next.next != null) {
+                current = current.next;
+            }
+            current.next = null;
         }
-
-        Node current = head;
-        while (current.next.next != null) {
-            current = current.next;
-        }
-
-        current.next = null;
+        size--;
     }
 
     public void deleteAtPosition(int index) {
-        if (head == null) {
-            System.out.println("List is empty");
+        if (head == null || index < 0 || index >= size) {
+            System.out.println("Index out of bounds");
             return;
         }
 
         if (index == 0) {
             head = head.next;
-            return;
+        } else {
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            current.next = current.next.next;
         }
-
-        Node current = head;
-
-        for (int i = 0; current != null && i < index - 1; i++) {
-            current = current.next;
-        }
-
-        if (current == null || current.next == null) {
-            System.out.println("Index out of bounds");
-            return;
-        }
-
-        current.next = current.next.next;
+        size--;
     }
 
     public void printList() {

@@ -38,6 +38,7 @@ public class MergeSortedLists {
         return head;
     }
 
+    // Helper method to print the linked list
     public static void printList(ListNode head) {
         if (head == null) {
             System.out.println("[]");

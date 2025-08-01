@@ -54,7 +54,7 @@ public class MergeSortedLists {
     }
 
     public static void main(String[] args) {
-        int[] arr1 = {1, 2, 4};
+        int[] arr1 = {1, 3, 4};
         int[] arr2 = {1, 3, 4};
 
         ListNode list1 = createList(arr1);

@@ -25,7 +25,6 @@ class Solution {
         return prev;
     }
 
-    // Utility function to print the linked list
     public void printList(ListNodeLeetcode206 head) {
         ListNodeLeetcode206 temp = head;
         while (temp != null) {
@@ -35,7 +34,6 @@ class Solution {
         System.out.println("Null");
     }
 
-    // Utility function to create a list from array
     public ListNodeLeetcode206 createList(int[] arr) {
         if (arr.length == 0) return null;
         ListNodeLeetcode206 head = new ListNodeLeetcode206(arr[0]);
@@ -48,7 +46,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Solution sol = new Solution();
+        Solution sol = new Solution(); // ✅ Fixed this line
 
         int[] values = {1, 2, 3, 4, 5};
         ListNodeLeetcode206 head = sol.createList(values);

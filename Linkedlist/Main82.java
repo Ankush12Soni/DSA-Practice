@@ -10,6 +10,9 @@ public class Main82 {
         head.next.next.next.next = new ListNode82(4);
         head.next.next.next.next.next = new ListNode82(4);
         head.next.next.next.next.next.next = new ListNode82(5);
+        head.next.next.next.next.next.next.next = new ListNode82(6);
+
+
 
         Solution82LL solution = new Solution82LL();
         

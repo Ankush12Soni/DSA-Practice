@@ -9,7 +9,16 @@ class ListNode {
     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 }
 
+
+
 public class MergeSortedLists {
+
+//    public ListNode sortList(ListNode head) {
+//        if(head == null && head.next == null){
+//            return head;
+//        }
+//        ListNode mid =
+//    }
 
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         // Base cases
